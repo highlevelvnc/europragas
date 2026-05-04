@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { LoadingScreen } from "@/components/LoadingScreen";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -82,7 +84,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-PT" className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        <LoadingScreen />
+        <ScrollProgress />
+        {children}
+      </body>
     </html>
   );
 }

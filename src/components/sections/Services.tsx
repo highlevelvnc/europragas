@@ -27,14 +27,16 @@ const SERVICES: Service[] = [
     description:
       "Proteção total para a sua casa e família com tratamentos seguros e duradouros.",
     icon: Home,
-    message: "Olá, tenho interesse em desinfestação residencial. Pode enviar orçamento?",
+    message:
+      "Olá, tenho interesse em desinfestação residencial. Pode enviar orçamento?",
   },
   {
     title: "Controlo de pragas para empresas",
     description:
       "Planos contínuos de monitorização para conformidade sanitária e tranquilidade total.",
     icon: Building,
-    message: "Olá, gostaria de um plano de controlo de pragas para a minha empresa.",
+    message:
+      "Olá, gostaria de um plano de controlo de pragas para a minha empresa.",
   },
   {
     title: "Tratamento contra baratas",
@@ -69,7 +71,8 @@ const SERVICES: Service[] = [
     description:
       "Desinfecção profissional para garantir ambientes saudáveis e em conformidade.",
     icon: SprayCan,
-    message: "Olá, gostaria de orçamento para higienização e proteção do meu espaço.",
+    message:
+      "Olá, gostaria de orçamento para higienização e proteção do meu espaço.",
   },
 ];
 
@@ -104,19 +107,29 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, delay: i * 0.05 }}
-              className="card-tech group p-7 sm:p-8 flex flex-col"
+              whileHover={{ y: -4 }}
+              className="group relative card-tech p-7 sm:p-8 flex flex-col rounded-md"
             >
-              <service.icon
+              <div
                 aria-hidden
-                className="absolute right-5 top-5 h-20 w-20 text-gold/5 group-hover:text-gold/15 transition-colors"
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-md"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(255,215,0,0.1) 0%, transparent 50%)",
+                }}
               />
 
-              <div className="relative">
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-md bg-gold/10 border border-gold/20 text-gold mb-5">
+              <service.icon
+                aria-hidden
+                className="absolute right-5 top-5 h-20 w-20 text-gold/[0.04] group-hover:text-gold/15 transition-colors duration-500"
+              />
+
+              <div className="relative z-10">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-md bg-gold/10 border border-gold/20 text-gold mb-5 group-hover:bg-gold group-hover:text-ink-950 group-hover:border-gold transition-all duration-300">
                   <service.icon className="h-6 w-6" />
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
+                <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-gold-100 transition-colors">
                   {service.title}
                 </h3>
                 <p className="text-steel-300 leading-relaxed mb-6">

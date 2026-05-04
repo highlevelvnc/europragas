@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Utensils,
@@ -13,6 +14,7 @@ import {
   Briefcase,
 } from "lucide-react";
 import { whatsappUrl } from "@/lib/contact";
+import { IMAGES } from "@/lib/images";
 
 const BUSINESS_TYPES = [
   { icon: Utensils, label: "Restaurantes" },
@@ -33,9 +35,21 @@ export function Business() {
     <section className="relative py-20 sm:py-28">
       <div className="container-page">
         <div className="relative overflow-hidden rounded-2xl border border-gold/20 bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 p-8 sm:p-12 lg:p-16">
+          <Image
+            src={IMAGES.disinfection1}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 1100px, 100vw"
+            className="object-cover opacity-15"
+            aria-hidden
+          />
           <div
             aria-hidden
-            className="absolute inset-0 bg-hex-pattern bg-[length:56px_98px] opacity-40"
+            className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/95 to-ink-950/70"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-hex-pattern bg-[length:56px_98px] opacity-30"
           />
           <div
             aria-hidden
@@ -91,10 +105,14 @@ export function Business() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="grid grid-cols-2 gap-3"
             >
-              {BUSINESS_TYPES.map((type) => (
-                <li
+              {BUSINESS_TYPES.map((type, i) => (
+                <motion.li
                   key={type.label}
-                  className="group flex items-center gap-3 rounded-md border border-steel-300/10 bg-ink-950/40 px-4 py-3.5 hover:border-gold/40 hover:bg-ink-800/60 transition-all"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.4, delay: 0.15 + i * 0.04 }}
+                  className="group flex items-center gap-3 rounded-md border border-steel-300/10 bg-ink-950/50 backdrop-blur-sm px-4 py-3.5 hover:border-gold/40 hover:bg-ink-800/60 transition-all"
                 >
                   <span className="flex h-9 w-9 items-center justify-center rounded-md bg-gold/10 text-gold group-hover:bg-gold group-hover:text-ink-950 transition-colors">
                     <type.icon className="h-4 w-4" />
@@ -102,7 +120,7 @@ export function Business() {
                   <span className="text-sm font-medium text-steel-100 tracking-tight">
                     {type.label}
                   </span>
-                </li>
+                </motion.li>
               ))}
             </motion.ul>
           </div>
