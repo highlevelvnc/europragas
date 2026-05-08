@@ -2,6 +2,7 @@ import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { Stats } from "@/components/sections/Stats";
 import { Pests } from "@/components/sections/Pests";
+import { Cases } from "@/components/sections/Cases";
 import { Services } from "@/components/sections/Services";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { Process } from "@/components/sections/Process";
@@ -18,6 +19,7 @@ export default function HomePage() {
         <Hero />
         <Stats />
         <Pests />
+        <Cases />
         <Services />
         <WhyUs />
         <Process />
